@@ -25,11 +25,13 @@ const paths = {
 };
 
 function render_html() {
-  const base_url = "https://www.thomassteeples.co.uk/"; // production
+  // const base_url = "https://www.thomassteeples.co.uk/"; // production
   // const base_url = "https://d3v5q1y0mmn3mu.cloudfront.net/"; // cloudfront
   // const base_url =
   //   "http://thomasfsteepleswebsite.s3-website.eu-west-2.amazonaws.com/"; // S3
-  // const base_url = "/Users/steeps/Documents/new_site/public/"; // development
+  // const base_url = "/Users/steeps/Documents/new_site/public/"; // development - macbook
+  // const base_url = "/home/steeps/Documents/my-website/public/" // development - dell
+  const base_url = "127.0.0.1" // development - nginx
 
   return gulp
     .src(paths.input.html)
