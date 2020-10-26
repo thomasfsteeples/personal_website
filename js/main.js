@@ -1,8 +1,6 @@
 "use strict";
 
-window.onload = function () {
-  this.operate_accordion();
-};
+operate_accordion();
 
 function operate_accordion() {
   const accordion = document.getElementById("accordion");
