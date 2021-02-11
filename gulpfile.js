@@ -25,19 +25,11 @@ const paths = {
 };
 
 function render_html() {
-  // const base_url = "https://www.thomassteeples.co.uk/"; // production
-  // const base_url = "https://d3v5q1y0mmn3mu.cloudfront.net/"; // cloudfront
-  // const base_url =
-  //   "http://thomasfsteepleswebsite.s3-website.eu-west-2.amazonaws.com/"; // S3
-  // const base_url = "/Users/steeps/Documents/new_site/public/"; // development - macbook
-  // const base_url = "/home/steeps/Documents/my-website/public/" // development - dell
-  const base_url = "127.0.0.1" // development - nginx
-
   return gulp
     .src(paths.input.html)
     .pipe(
       mustache({
-        base_url: base_url,
+
       })
     )
     .pipe(gulp.dest(paths.output.html));
@@ -69,7 +61,7 @@ function render_scss() {
         tidyBlockScopes: true, // controls block scopes (e.g. `@media`) optimizing; defaults to `true`
         tidySelectors: true, // controls selectors optimizing; defaults to `true`,
         semicolonAfterLastProperty: false, // controls removing trailing semicolons in rule; defaults to `false` - means remove
-        transform: function () {} // defines a callback for fine-grained property optimization; defaults to no-op
+        transform: function () { } // defines a callback for fine-grained property optimization; defaults to no-op
       },
       2: {
         mergeAdjacentRules: true, // controls adjacent rules merging; defaults to true
@@ -87,7 +79,8 @@ function render_scss() {
         restructureRules: false, // controls rule restructuring; defaults to false
         skipProperties: [] // controls which properties won't be optimized, defaults to `[]` which means all will be optimized (since 4.1.0)
       }
-    }};
+    }
+  };
   return gulp
     .src(paths.input.scss)
     .pipe(sass().on("error", sass.logError))
