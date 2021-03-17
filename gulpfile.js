@@ -14,7 +14,8 @@ const paths = {
     scss: "./scss/*.scss",
     js: "./js/*.js",
     media: "./media/**/*",
-    cgt: "./computational_game_theory/**/*"
+    cgt: "./computational_game_theory/**/*",
+    aamas: "./AAMAS_presentation"
   },
 
   output: {
@@ -22,7 +23,8 @@ const paths = {
     css: "./public/css/",
     js: "./public/js/",
     media: "./public/media/",
-    cgt: "./public/computational_game_theory"
+    cgt: "./public/computational_game_theory",
+    aamas: "./public/AAMAS_presentation"
   },
 };
 
@@ -106,16 +108,21 @@ function process_cgt() {
   return gulp.src(paths.input.cgt).pipe(gulp.dest(paths.output.cgt));
 }
 
+function process_aamas() {
+  return gulp.src(paths.input.aamas).pipe(gulp.dest(paths.output.aamas));
+}
 
 exports.render_html = render_html;
 exports.render_scss = render_scss;
 exports.compile_js = compile_js;
 exports.process_media = process_media;
 exports.process_cgt = process_cgt
+exports.process_cgt = process_aamas
 exports.build = gulp.parallel(
   render_html,
   render_scss,
   compile_js,
   process_media,
-  process_cgt
+  process_cgt,
+  process_aamas
 );
