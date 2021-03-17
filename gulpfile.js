@@ -15,7 +15,7 @@ const paths = {
     js: "./js/*.js",
     media: "./media/**/*",
     cgt: "./computational_game_theory/**/*",
-    aamas: "./AAMAS_presentation"
+    aamas: "./AAMAS_presentation/**/*"
   },
 
   output: {
