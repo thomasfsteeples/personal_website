@@ -1,12 +1,9 @@
 const gulp = require("gulp");
-const mustache = require("gulp-mustache");
 const sass = require("gulp-sass");
 sass.compiler = require("sass");
 const cleanCSS = require("gulp-clean-css");
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
-const path = require("path");
-const fs = require("fs");
 
 const paths = {
   input: {
@@ -31,11 +28,6 @@ const paths = {
 function render_html() {
   return gulp
     .src(paths.input.html)
-    .pipe(
-      mustache({
-
-      })
-    )
     .pipe(gulp.dest(paths.output.html));
 }
 

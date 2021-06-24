@@ -1,5 +1,14 @@
 @use 'includes/normalize';
-@import url("https://fonts.googleapis.com/css2?family=Cardo:wght@400&family=Catamaran:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "Bagnard";
+  src: url("./fonts/Bagnard.otf") format("otf");
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url("./fonts/OpenSans-Regular.ttf") format("ttf"),
+       url("./fonts/OpenSans-Bold.ttf") format("ttf");
+}
 
 $highlight-colour: #8052b2;
 $text-color: #343a40;
@@ -13,14 +22,14 @@ $text-color: #343a40;
 }
 
 * {
-  font-family: "Catamaran", sans-serif;
-  // color: $text-color;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
 }
 
 h1,
 h2,
 h3 {
-  font-family: "Cardo", serif;
+  font-family: "Bagnard", serif;
   font-weight: normal;
 }
 
@@ -34,6 +43,11 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
+}
+
+a {
+  color: $highlight-colour;
+  text-decoration: none;
 }
 
 #self-portrait {
@@ -71,8 +85,14 @@ h3 {
 }
 
 #email {
-  font-size: 2rem;
   color: $highlight-colour;
+}
+
+.feather-icon {
+  height : 2rem;
+  width: auto;
+  top: .250rem;
+  position: relative;
 }
 
 @media (max-width: 991.98px) {

@@ -1,1 +1,28 @@
-"use strict";function _createForOfIteratorHelper(e,t){var r;if("undefined"==typeof Symbol||null==e[Symbol.iterator]){if(Array.isArray(e)||(r=_unsupportedIterableToArray(e))||t&&e&&"number"==typeof e.length){r&&(e=r);var n=0,t=function(){};return{s:t,n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:t}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var o,a=!0,i=!1;return{s:function(){r=e[Symbol.iterator]()},n:function(){var e=r.next();return a=e.done,e},e:function(e){i=!0,o=e},f:function(){try{a||null==r.return||r.return()}finally{if(i)throw o}}}}function _unsupportedIterableToArray(e,t){if(e){if("string"==typeof e)return _arrayLikeToArray(e,t);var r=Object.prototype.toString.call(e).slice(8,-1);return"Map"===(r="Object"===r&&e.constructor?e.constructor.name:r)||"Set"===r?Array.from(e):"Arguments"===r||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)?_arrayLikeToArray(e,t):void 0}}function _arrayLikeToArray(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=new Array(t);r<t;r++)n[r]=e[r];return n}function operate_accordion(){var r,e=document.getElementById("accordion").getElementsByClassName("panel"),n=e[0],t=_createForOfIteratorHelper(e);try{var o=function(){var t=r.value,e=t.getElementsByClassName("contents")[0];t!=n&&e.setAttribute("hidden",!0),t.getElementsByTagName("h2")[0].addEventListener("click",function(){var e;e=t,n.getElementsByClassName("contents")[0].setAttribute("hidden",!0),(n=e).getElementsByClassName("contents")[0].removeAttribute("hidden")})};for(t.s();!(r=t.n()).done;)o()}catch(e){t.e(e)}finally{t.f()}}operate_accordion();
+"use strict";
+
+operate_accordion();
+
+function operate_accordion() {
+  const accordion = document.getElementById("accordion");
+  const all_panels = accordion.getElementsByClassName("panel");
+  let active_panel = all_panels[0];
+
+  for (const panel of all_panels) {
+    let current_contents = panel.getElementsByClassName("contents")[0];
+    if (panel != active_panel) {
+      current_contents.setAttribute("hidden", true);
+    }
+    let heading = panel.getElementsByTagName("h2")[0];
+    heading.addEventListener("click", function () {
+      activate_panel(panel);
+    });
+  }
+
+  function activate_panel(panel) {
+    let old_contents = active_panel.getElementsByClassName("contents")[0];
+    old_contents.setAttribute("hidden", true);
+    active_panel = panel;
+    let new_contents = active_panel.getElementsByClassName("contents")[0];
+    new_contents.removeAttribute("hidden");
+  }
+}

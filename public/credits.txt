@@ -1,0 +1,5 @@
+# Thomas Steeples's Personal Website
+
+If you have found this page, then congrats! You are a nosy sort of person who likes looking under the hood, kicking the tires in and you probably bringing your own dipstick. 
+
+I originally had a gulpfile.js and everything
