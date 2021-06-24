@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /media/
 Disallow: /aamas_presentation/
 Disallow: /computational_game_theory/
+Disallow: /credits.txt

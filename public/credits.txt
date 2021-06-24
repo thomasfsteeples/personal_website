@@ -1,5 +1,7 @@
 # Thomas Steeples's Personal Website
 
-If you have found this page, then congrats! You are a nosy sort of person who likes looking under the hood, kicking the tires in and you probably bringing your own dipstick. 
+If you have found this page, then congrats! You're a nosy bastard who likes looking under the hood and kicking the tires in. I bet you've brought your own dipstick as well. 
 
-I originally had a gulpfile.js and everything
+How did I craft this glorious monument to hubris, I hear you ask? Originally, I had heard of this nifty static site generator called Hugo (https://gohugo.io). It was pretty cool! It was dead easy to get up and running, had a nice templating syntax. Beautiful. Easy. I picked a nice theme (Aafu, by Darshan Baral, https://themes.gohugo.io/aafu/, licensed under MIT. You can still see the hangovers of this theme. I definitely prefer how my site looks now).
+
+Flash-forward six months. I wanted to update something. Something _tiny_. 
