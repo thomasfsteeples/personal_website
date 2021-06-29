@@ -9,15 +9,19 @@ function main()
     mkdir "${SCRIPT_DIR}"/public
 
     cp "${SCRIPT_DIR}"/robots.txt "${SCRIPT_DIR}"/public
-    cp "${SCRIPT_DIR}"/credits.txt "${SCRIPT_DIR}"/public
+
     cp -r "${SCRIPT_DIR}"/html/* "${SCRIPT_DIR}"/public
 
     sass --no-source-map "${SCRIPT_DIR}/scss/style.scss" "${SCRIPT_DIR}/public/css/style.css"
 
     cp -r "${SCRIPT_DIR}"/js "${SCRIPT_DIR}"/public
 
-    cp -r "${SCRIPT_DIR}"/media/ "${SCRIPT_DIR}"/public
-    cp -r "${SCRIPT_DIR}"/fonts/ "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/media "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/fonts "${SCRIPT_DIR}"/public
+
+    cp -r "${SCRIPT_DIR}"/aamas_presentation "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/computational_game_theory "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/papers "${SCRIPT_DIR}"/public
 }
 
 main
