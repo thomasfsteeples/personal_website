@@ -85,8 +85,21 @@ a {
   }
 }
 
+#credits-container {
+  width : 75%;
+  margin: auto;
+}
+
 #email {
   color: $highlight-colour;
+}
+
+.contents {
+  display : none;
+}
+
+#initially-open-contents {
+  display : block;
 }
 
 .feather-icon {
@@ -94,11 +107,6 @@ a {
   width: auto;
   top: .250rem;
   position: relative;
-}
-
-#credits-container {
-  width : 75%;
-  margin:auto;
 }
 
 @media (max-width: 991.98px) {
