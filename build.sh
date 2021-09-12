@@ -7,17 +7,23 @@ function main()
 
     rm -rf "${SCRIPT_DIR}"/public
     mkdir "${SCRIPT_DIR}"/public
+    mkdir "${SCRIPT_DIR}"/public/css
+    mkdir "${SCRIPT_DIR}"/public/js
 
     cp "${SCRIPT_DIR}"/robots.txt "${SCRIPT_DIR}"/public
-    cp "${SCRIPT_DIR}"/credits.txt "${SCRIPT_DIR}"/public
+
     cp -r "${SCRIPT_DIR}"/html/* "${SCRIPT_DIR}"/public
 
-    sass --no-source-map "${SCRIPT_DIR}/scss/style.scss" "${SCRIPT_DIR}/public/css/style.css"
+    sass --no-source-map "${SCRIPT_DIR}/scss/style.scss" | sed "1s;^;/*! For open source licenses, see credits.html */\n;" | cleancss -O2 > "${SCRIPT_DIR}/public/css/style.css"
 
-    cp -r "${SCRIPT_DIR}"/js "${SCRIPT_DIR}"/public
+    uglifyjs "${SCRIPT_DIR}"/js/main.js --compress --mangle --comments /^!/ -o "${SCRIPT_DIR}"/public/js/main.js
 
-    cp -r "${SCRIPT_DIR}"/media/ "${SCRIPT_DIR}"/public
-    cp -r "${SCRIPT_DIR}"/fonts/ "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/media "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/fonts "${SCRIPT_DIR}"/public
+
+    cp -r "${SCRIPT_DIR}"/aamas_presentation "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/computational_game_theory "${SCRIPT_DIR}"/public
+    cp -r "${SCRIPT_DIR}"/papers "${SCRIPT_DIR}"/public
 }
 
 main

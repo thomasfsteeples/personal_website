@@ -85,8 +85,21 @@ a {
   }
 }
 
+#credits-container {
+  width : 75%;
+  margin: auto;
+}
+
 #email {
   color: $highlight-colour;
+}
+
+.contents {
+  display : none;
+}
+
+#initially-open-contents {
+  display : block;
 }
 
 .feather-icon {

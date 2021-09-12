@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Thomas Steeples">
+    <title>Computational Game Theory - Problem Sheet 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/reveal.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script type="text/javascript" id="MathJax-script" defer
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1 class="title">Computational Game Theory</h1>
+                <h2>Problem Sheet 1 - Preferences, Utilities, and Decisions</h2>
+                <h3>2 February 2021</h3>
+                <p hidden>
+                    \(\newcommand{\pref}{\succ}\)
+                    \(\newcommand{\EU}{\mathit{EU}}\)
+                    \(\newcommand{\prefeq}{\succeq}\)
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 1: Lexicographic Preferences</h2>
+                <p>Recall the example of lexicographic preferences from the lecture. The attributes are colour, engine
+                    type, and nationality, with the ranking,
+                    \begin{equation*}
+                    \text{colour}> \text{engine} > \text{nationality}
+                    \end{equation*}
+                    The ordering for each of attribute is:
+                </p>
+                <ul>
+                    <li><em>colour</em>: \(\text{red} \pref \text{blue} \pref \text{green}\)</li>
+                    <li><em>engine type</em>: \(\text{electric} \pref \text{petrol} \pref \text{diesel}\)</li>
+                    <li><em>nationality</em>: \(\text{German} \pref \text{French} \pref \text{UK}\)</li>
+                </ul>
+                <p>
+                    Define a utility function that takes three inputs (colour, engine
+                    type, and nationality) and gives as output a real number, such that
+                    this utility function corresponds to the preference ordering defined
+                    above. <em>Don't</em> do this by enumerating all 27 cases! Argue for
+                    the correctness of your function.
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 1: Solution</h2>
+                <p>
+                    Define
+                    \begin{align*}
+                    U(\text{red})=U(\text{electric})=u(\text{German})&=2
+                    \\
+                    U(\text{blue})=U(\text{petrol})=u(\text{French})&=1
+                    \\
+                    U(\text{green})=U(\text{diesel})=u(\text{UK})&=0
+                    \end{align*}
+                    Then, define
+                    \[
+                    u(x,y, z) = 100*U(x) + 10*U(y) + U(z)\text,
+                    \]
+                    where \(x\in\set{\text{red},\text{blue},\text{green}}\),
+                    \(y\in\set{\text{electric},\text{petrol},\text{diesel}}\), and
+                    \(z\in\set{\text{German},\text{French},\text{UK}}\).
+                </p>
+            </section>
+            <section>
+                <h2>Exercise 1: Solution</h2>
+                <p>
+                    Observe that for all \(x,x'\in\set{\text{red},\text{blue},\text{green}}\) with \(x\neq x'\), and
+                    \(y,y'\in\set{\text{electric},\text{petrol},\text{diesel}}\) with \(y\neq y'\), and
+                    \(z\in\set{\text{German},\text{French},\text{UK}}\) we have that: </p>
+                <ul>
+                    <li>\(|U(y)-U(y')|>U(z)\), and, </li>
+                    <li> \(|U(x)-U(x')|>U(y)+U(z)\).</li>
+                </ul>
+                <p>Any solution which satisfies the above two conditions will work.</p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Impossibility of Existence of Utility Representations</h2>
+                <p>To make things simple in the lectures, we assumed our set of outcomes \(\Omega\) was finite.
+                    Let’s now look at an example where this is not the case. Let the set of outcomes \(\Omega\) be
+                    \(\mathbb{R}_+\times \mathbb{R}_+\).
+                    Now define a preference relation \(\succeq\colon\Omega\times\Omega\) by:
+                    \begin{equation*}
+                    (x1,x2) \succeq(y1,y2) \quad\text{iff}\quad x1>y1 \,\text{or}\, [x1 =y1 \,\text{and}\, x2 \geq y2]
+                    \end{equation*}
+                </p>
+                <ol>
+                    <li>Prove that the relation \(\succeq\) defined in this way is indeed a properly defined preference
+                        relation.</li>
+                    <li>Prove that there can exist no utility function \(u : \Omega\to\mathbb{R}\) representing
+                        \(\succeq\).</li>
+                </ol>
+                <p>
+                    (It may be useful to note that between any two distinct real numbers
+                    there lies a rational number.)
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Solution</h2>
+                <p>
+                    For the first part, we have to prove that \(\succeq\) is total, reflexive, and transitive.
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Solution</h2>
+                <h3>Totality</h3>
+                <p>
+                    Consider arbitrary \((x_1,x_2),(y_1,y_2)\in \mathbb{R}_+\times\mathbb{R}_+\). By totality of
+                    \(\geq\)
+                    on \(\mathbb{R}_+\), either \(x_1>y_1\), \(y_1>x_1\), or \(x_1=y_1\).
+                    If the former, \((x_1,x_2)\succeq (y_1,y_2)\).
+                    If \(y_1>x_1\), immediately \((y_1,y_2)\succeq (x_1,x_2)\).
+                    If \(x_1=y_1\), either \(x_2\ge y_2\) or \(y_2>x_2\). If \(x_2\ge y_2\), then \((x_1,x_2)\succeq
+                    (y_1,y_2)\).
+                    If \(y_2>x_2\), also \(y_2\ge x_2\), and it follows that \((y_1,y_2)\succeq (x_1,x_2)\).
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Solution</h2>
+                <h3>Reflexivity</h3>
+                <p>
+                    Consider arbitrary \((x_1,x_2)\in \mathbb{R}_+\times\mathbb{R}_+\). Then, both \(x_1=x_1\) and
+                    \(x_2\ge x_2\). It follows that \((x_1,x_2)\succeq (x_1,x_2)\).
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Solution</h2>
+                <h3>Transitivity</h3>
+                <p>
+                    Consider arbitrary \((x_1,x_2),(y_1,y_2),(z_1,z_2)\in \mathbb{R}_+\times\mathbb{R}_+\) such that we
+                    have
+                    \((x_1,x_2)\succeq(y_1,y_2)\) and \((y_1,y_2)\succeq(z_1,z_2)\).
+                    We distinguish four cases:</p>
+                <ol>
+                    <li>\(x_1>y_1\) and \(y_1>z_1\),</li>
+                    <li>\(x_1>y_1\), \(y_1=z_1\) and \(y_2\ge z_2\),</li>
+                    <li>\(x_1=y_1\), \(x_2\ge y_2\), and \(y_1>z_1\),</li>
+                    <li>\(x_1=y_1\), \(x_2\ge y_2\), \(y_1=z_1\), and \(y_2\ge z_2\).</li>
+                </ol>
+                <p>
+                    In the first three cases, we have \(x_1>z_1\) and hence \((x_1,x_2)\succeq(z_1,z_2)\).
+                    In the fourth case, we have \(x_1=z_1\) and \(x_2\ge z_2\). Accordingly,
+                    \((x_1,x_2)\succeq(z_1,z_2)\), as
+                    desired.
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Solution</h2>
+                <p>For the second part, we proceed with proof by contradiction. So assume there exists such a function.
+                    Thus, for all \((x_1, x_2), (y_1, y_2) \in \mathbb{R}_+ \times \mathbb{R}_+\), we have \(u(x1, x2)
+                    \geq u(y_1, y_2)\) if and only if \(x_1, x_2 \succeq y_1, y_2\).</p>
+            </section>
+
+            <section>
+                <h2>Exercise 2: Solution</h2>
+                <p>So for an arbitrary \(x\), we have \(u(x+1, 1) > u(x, 2) > u(x, 1)\). Thus, consider the set of
+                    intervals,
+                    \begin{equation*}
+                    I = \{[u(x,1), u(x,2)] \mid x \in \mathbb{R}\}.
+                    \end{equation*}
+                    Every interval is non-empty, and every pair of intervals in \(I\) is disjoint. As every interval is
+                    non-empty, it contains a rational number, \(q_x \in [u(x,1), u(x,2)]\). Define a mapping \(f :
+                    \mathbb{R} \to \mathbb{Q}\) by \(f(x) = q_x\). This mapping must be injective, as the intervals in
+                    \(I\) are disjoint. But this implies the real numbers are countable, which is a contradiction.
+                </p>
+            </section>
+
+            <section>
+                <h2>Exercise 3: Expected Utility</h2>
+                <p>
+                    You have three entertainment choices: football, pub, or rowing.
+                    The utility you obtain from these will depend on whether it rains or
+                    not. The utilities you get from these outcomes are as follows:
+                </p>
+                <table>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Utility if rain</th>
+                        <th>Utility if no rain</th>
+                    </tr>
+                    <tr>
+                        <td>football</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>pub</td>
+                        <td>3</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>rowing</td>
+                        <td> 0</td>
+                        <td> 1</td>
+                    </tr>
+                </table>
+                <p>
+                    You have a decision task ahead: to choose which activity to
+                    undertake. In what follows, let \(p_{\mathit{rain}}\) denote the probability of rain.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 3: Expected Utility</h3>
+                <ol>
+                    <li>Formulate this as a problem of decision making under
+                        uncertainty.</li>
+                    <li>Can you identify an alternative that you would never choose,
+                        irrespective of the value of \(p_{\mathit{rain}}\)?</li>
+                    <li> Can you write down of a rule that shows what the best thing to
+                        do is, as a function of \(p_{\mathit{rain}}\)? (The rule would say something like "if
+                        \(p_{\mathit{rain}} \in [X,Y]\) then do \(Z\), else if...")</li>
+                </ol>
+            </section>
+
+            <section>
+                <h3>Exercise 3: Solution</h3>
+                <p>Let \(F\), \(P\), and \(R\) abbreviate football, pub, and rowing, respectively, and let \(R\) and
+                    \(D\)
+                    abbreviate rain and dry, respectively.
+                    For notation convenience we write \(XY\) for the pair \((X,Y)\).
+                    We specify the setting as a tuple,
+                    \begin{equation*}
+                    \langle\Omega,u\colon\Omega\to\mathbb{R},\Sigma,g\colon\Sigma\to\text{lott}(\Omega)\rangle,
+                    \end{equation*}
+                    where ...
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 3: Solution</h3>
+                <p>
+                    The set of outcomes, \(\Omega\), is given by,
+                    \begin{align*}
+                    \Omega
+                    &=\set{\text{football},\text{pub},\text{rowing}}\times\set{\text{rain},\text{dry}} \\
+                    &=\set{FR,FD,PR,PD,RR,RD}
+                    \end{align*}
+                    The utility function \(u\) is given by:
+                    \begin{align*}
+                    u(FR) & = 1 & u(FD) & = 2\\
+                    u(PR) & = 3 & u(PD) & = 0\\
+                    u(RR) & = 0 & u(RD) & = 1
+                    \end{align*}
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 3: Solution</h3>
+                <p>
+                    The set of strategies, \(\Sigma\), is given by,
+                    \begin{equation*}
+                    \Sigma=\{F,P,R\}
+                    \end{equation*}
+
+                    The outcome function \(g\) is given by:
+                    \begin{align*}
+                    g(F) & = p_{\mathit{rain}}*FR + (1-p_{\mathit{rain}})*FD\\
+                    g(P) & = p_{\mathit{rain}}*PR + (1-p_{\mathit{rain}})*PD\\
+                    g(R) & = p_{\mathit{rain}}*RR + (1-p_{\mathit{rain}})*RD\\
+                    \end{align*}
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 3: Solution</h3>
+                <p>
+                    Is there an alternative you would never choose, regardless of the value of \(p_{\mathit{rain}}\)?
+                    Yes, rowing, because football is preferred to rowing if it rains and football is preferred to rowing
+                    when it is dry.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 3: Solution</h3>
+                <p>
+                    As we've established we are not going rowing under any circumstances, it suffices to compare playing
+                    football, and going to the pub. What are their corresponding expected utilities?
+                    \begin{align*}
+                    \text{EU}(F) &= 2 - p_{\mathit{rain}}, \\
+                    \text{EU}(P) &= 3p_{\mathit{rain}}.
+                    \end{align*}
+                    We have \(\text{EU}(F) \geq \text{EU}(P)\) if and only if \(p_{\mathit{rain}} \leq \frac{1}{2}\). So
+                    if the probability of it raining is less than \(\frac{1}{2}\), then you should go play football. If
+                    it is greater than \(\frac{1}{2}\), then you should go down the pub. If it is exactly equal to
+                    \(\frac{1}{2}\), then you are indifferent between the two possibilities.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 4: Axioms</h3>
+                <p>
+                    Suppose \(\Omega = \{A, B\}\) and \(A \succ B\). Then I claim that, for all values \(p \in (0, 1]\),
+                    we have:
+                    \begin{equation*}
+                    [pA + (1-p)B] \succ B
+                    \end{equation*}
+                    Argue that if the relation \(\succ\) satisfies the Von Neumann and Morgenstern axioms, then this
+                    property will indeed hold. You should make clear in your answer which of the Von Neumann and
+                    Morgenstern axioms you are appealing to.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 4: Solution</h3>
+                <p>
+                    By the independence axiom, for all loteries \(\ell\) and probabilities \(p \in (0, 1)\), we
+                    have,
+                    \begin{equation*}
+                    pA + (1-p)\ell \succ p B + (1-p) \ell.
+                    \end{equation*}
+                    This is true for all lotteries, so it is also true for \(\ell = B\), giving us,
+                    \begin{equation*}
+                    pA + (1-p)B \succ B.
+                    \end{equation*}
+                    The case of \(p =1\) follows from \(A \succ B\).
+                </p>
+            </section>
+
+            <section>
+                <h3>
+                    Exercise 5: Satisfying the axioms
+                </h3>
+                <p>
+                    Consider the following four lotteries with monetary rewards:
+                    \begin{align*}
+                    \ell_1 &= \left[\frac{1}{2} £100 + \frac{1}{2} £0\right] \\
+                    \ell_2 &= £50 \\
+                    \ell_3 &= \left[\frac{1}{20} £100 + \frac{19}{20} £0\right] \\
+                    \ell_4 &= \left[\frac{1}{10} £50 + \frac{9}{10} £0\right]
+                    \end{align*}
+                    Now suppose I claim that my preferences satsify both \(\ell_2 \succ \ell_1\) and
+                    \(\ell_3 \succ \ell_4\). Show that my preferences in this case do not satisfy the Von
+                    Neumann and Morgenstern axioms.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 5: Solution</h3>
+                <p>
+                    For a contradiction, suppose they do satisfy the axioms. Then there exists a utility function \(u\)
+                    which captures them. Thus we have,
+                    \begin{align*}
+                    \text{EU}(\ell_2) &&gt; \text{EU}(\ell_1), \\
+                    \text{EU}(\ell_3) &&gt; \text{EU}(\ell_4).
+                    \end{align*}
+                    These in turn imply,
+                    \begin{equation*}
+                    0.5 u(£100) + 0.5 u(£0) &lt; u(£50) &lt; 0.5 u(£100) + 0.5 u(£0).
+                    \end{equation*}
+                    A contradiction.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 6: Manipulating lotteries</h3>
+                <p>
+                    Suppose \(\Omega = \{A, B, C, D\}\), and consider the following four lotteries over \(\Omega\):
+                    \begin{align*}
+                    \ell_1 &= \left[\frac{3}{5} A + \frac{2}{5} D\right] \\
+                    \ell_2 &= \left[\frac{3}{4} A + \frac{1}{4} C\right] \\
+                    \ell_3 &= \left[\frac{2}{5} A + \frac{1}{5} B + \frac{1}{5}C + \frac{1}{5} D\right] \\
+                    \ell_4 &= \left[\frac{2}{5} A + \frac{3}{5} C\right]
+                    \end{align*}
+            </section>
+
+            <section>
+                <h3>Exercise 6: Manipulating lotteries</h3>
+                <p>
+                    Suppose that a Von Neumann and Morgenstern preference relation \(\succ \subseteq \text{lott}(\Omega)
+                    \times \text{lott}(\Omega)\) satisfies the following properties:
+                    \begin{align*}
+                    C &\sim \ell_1 \\
+                    B &\sim \ell_2 \\
+                    A &\succ D
+                    \end{align*}
+                    How are \(\ell_3\) and \(\ell_4\) ranked?
+                </p>
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 6: Solution</h3>
+                <p>
+                    We take \(\ell_3\) and \(\ell_4\) and try to express them solely in terms of \(A\) and
+                    \(D\). By independence axiom, we have,
+                    \begin{align*}
+                    \ell_3 &\sim \left[\frac{14}{20} A + \frac{6}{20} D\right] \\
+                    \ell_4 &\sim \left[\frac{19}{25} A + \frac{6}{25} D\right]
+                    \end{align*}
+                    Since \(A \succ D\), by the monotonicity axiom, we have that \(\ell_4 \succ \ell_3\).
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 7: Expected utility</h3>
+                <p>
+                    Suppose a person whose preferences satisfy the Von Neumann and
+                    Morgenstern axioms says that with respect to lotteries \(\ell_1,
+                    \ell_2, \ell_3\), and \(\ell_4\), her preferences are
+                    \begin{equation*}
+                    \ell_1 \succeq \ell_2\quad\text{and}\quad\ell_3 \succeq \ell_4.
+                    \end{equation*}
+                    Consider the following property. For all \(p \in [0,1]\) we have
+                    \begin{equation*}
+                    p \ell_1 + (1-p) \ell_3 \succeq p \ell_2 + (1-p) \ell_4
+                    \end{equation*}
+                    Do you think this property should hold? If so, can you prove it using the von Neumann and
+                    Morgenstern axioms?
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 7: Solution</h3>
+                <p>
+                    The property does hold:
+                    As \(\ell_1\succeq\ell_2\), by axiom of independence we have,
+                    \begin{equation*}
+                    p\ell_1+(1-p)\ell_3 \succeq p\ell_2+(1-p)\ell_3.
+                    \end{equation*}
+                    As \(\ell_3\succeq\ell_4\), we also have,
+                    \begin{equation*}
+                    (1-p)\ell_3+p\ell_2\succeq (1-p)\ell_4+p\ell_2\text.
+                    \end{equation*}
+                    By transitivity of \(\succeq\), we obtain:
+                    \begin{equation*}
+                    p\ell_1+(1-p)\ell_3 \succeq p\ell_2+(1-p)\ell_4
+                    \end{equation*}
+                    We have to handle \(p \in \{0,1\}\) separately, but these cases are trivial.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 8: Expected utility</h3>
+                <p>
+                    Recall the simple setting of win-lose lotteries. We have
+                    \(\Omega = \{\mathcal{W},\mathcal{L}\}\), and a preference relation \(\succeq\) such
+                    that \(\mathcal{W} \succ \mathcal{L}\). The continuity axiom for \(\mathcal{W}\text{-}\mathcal{L}\)
+                    lotteries is as follows: \(\ell_1 \succeq \ell_2\) iff
+                    \(P(\mathcal{W},\ell_1) \geq P(\mathcal{W},\ell_2)\).
+                </p>
+                <p>
+                    Show that if a preference relation over win-lose lotteries satisfies
+                    reflexivity, totality, transitivity, and continuity, then there exists
+                    a von Neumann and Morgenstern utility function
+                    \(u : \{\mathcal{W},\mathcal{L}\} \to \mathbb{R}\) such that
+                    \(\mathit{EU}(\ell_1) \geq \mathit{EU}(\ell_2)\) iff
+                    \(\ell_1 \succeq \ell_2\), where the expected utility function \(\mathit{EU} :
+                    \mathit{lott}(\{\mathcal{W},\mathcal{L}\}) \to \mathbb{R}\) is defined as usual,
+                    with respect to the von Neumann and Morgenstern utility function
+                    \(u\):
+                    \begin{equation*}
+                    \mathit{EU}(\ell) = \sum_{\omega \in \{\mathcal{W},\mathcal{L}\}} u(\omega) P(\omega,\ell)
+                    \end{equation*}
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 8: Solution</h3>
+                <p>
+                    Define \(u:\{\mathcal{W},\mathcal{L}\}\to\mathbb{R}\) such that
+                    \begin{equation*}
+                    u(\omega)=
+                    \begin{cases}
+                    1 & \text{if}\quad\omega=\mathcal{W}\\
+                    0 & \text{if}\quad\omega=\mathcal{L}.
+                    \end{cases}
+                    \end{equation*}
+                    Then,
+                    \begin{align*}
+                    \EU(\ell_1) & = u(\mathcal W)P(\mathcal W,\ell_1)+u(\mathcal L)P(\mathcal L,\ell_1)\\
+                    & = 1P(\mathcal W,\ell_1)+0\\
+                    & = P(\mathcal W,\ell_1)
+                    \end{align*}
+                    and
+                    \begin{align*}
+                    \EU(\ell_2) & = u(\mathcal W)P(\mathcal W,\ell_2)+u(\mathcal L)P(\mathcal L,\ell_2)\\
+                    & = 1(\mathcal W,\ell_2)+0\\
+                    & = P(\mathcal W,\ell_2)
+                    \end{align*}
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 8: Solution</h3>
+                <p>
+                    Hence,
+                    \begin{equation*}
+                    \ell_1\succeq\ell_2 \Leftrightarrow_{\text{cont.}}
+                    P(\mathcal W,\ell_1) \ge P(\mathcal W,\ell_2)
+                    \Leftrightarrow_{\text{def. $\EU$}} \EU(\ell_1)\ge \EU(\ell_2)\text.
+                    \end{equation*}
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 9: Expected utility</h3>
+                <p>
+                    Consider the following scenario. You toss a fair coin repeatedly, until the coin shows heads for the
+                    first time. You are then paid \(£ 2^k\), where \(k\) is the number
+                    of times the coin was tossed. For example, if the sequence of coin
+                    tosses was just \(H\) (i.e., heads appeared on the first toss) then
+                    \(k = 1\) and you are paid \(£2^1 = £ 2\). If the sequence
+                    was \(TTH\) then \(k = 3\) and you are paid \(£ 2^3 = £ 8\).
+                </p>
+                <ol>
+                    <li>Express this as a lottery (in which the set of outcomes is
+                        infinite)</li>
+                    <li>Assuming utility is expected monetary reward, compute the
+                        expected utility of this lottery</li>
+                    <li>Now assume that the utility function \(u\) over monetary outcomes is such that \(u(£
+                        n)=\log_2 n\). Show that the agent's expected utility of this game is upward bounded. </li>
+                    <li>By giving examples, argue that the agent with the utility function as in the previous part
+                        (i.e., logarithmic) is risk-averse.</li>
+                </ol>
+            </section>
+
+            <section>
+                <h3>Exercise 9: Solution</h3>
+                <p> Let \(\Omega=\{H, TH, TTH, TTTH,\ldots\}\). Then,
+                    \begin{equation*}
+                    \ell_{\text{St Petersburg}}
+                    =
+                    \frac{1}{2}H
+                    + \frac{1}{4}TH
+                    + \frac{1}{8}TTH
+                    + \ldots
+                    + \frac{1}{2^k}
+                    \underbrace{T\cdots T}_{\text{$k+1$ times}}H
+                    +\dots
+                    \end{equation*}
+                    If we equate money with utility, we have \( u(T^kH) = 2^{k+1}\), which implies,
+                    \begin{align*}
+                    \EU(\ell_{\text{St Petersburg}})
+                    & =
+                    \frac{1}{2}u(H)+\frac{1}{4}u(TH)+\dots\\
+                    & =
+                    \frac{1}{2}2^1 +\frac{1}{4} 2^2+\dots\\
+                    & = 1+1+1+1+\dots\\
+                    & = \infty
+                    \end{align*}
+                </p>
+            </section>
+            <section>
+                <h3>Exercise 9: Solution</h3>
+                <p>
+                    If we have \(u'(£k)=\log_2(k)\)
+                    Then,
+                    \begin{align*}
+                    \EU(\ell_{\text{St Petersburg}})
+                    & =
+                    \frac{1}{2}u'(H)+\frac{1}{4}u'(TH)+\dots\\
+                    & = \textstyle
+                    \frac{1}{2}\log_2(2^1) + \frac{1}{4}\log_2(2^2)+\dots\\
+                    & = 2
+                    \end{align*}
+                    The expected utility of the lottery would thus be bounded by \(2\).
+                    This would correspond to a monetary value of \(£ 4\).
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 9: Solution</h3>
+                <p>
+                    Consider the following two lotteries:
+                    \begin{align*}
+                    \ell_1 &= £50,\\
+                    \ell_2 &= \frac{1}{2} £0 + \frac{1}{2} £100.
+                    \end{align*}
+                    Second lottery have greater expected monetary value, but first has great expected utility with
+                    regard to the logarithmic utility.
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 10: Expected Utility</h3>
+                <p>
+                    The following story, albeit slightly morbid, is nevertheless
+                    apparently true.
+                </p>
+                <p>
+                    In the second world war, a US bomber squadron was based 3000km from
+                    their target. The target was so far away that fighter plane escorts
+                    were impossible, making missions even more than usually dangerous.
+                    Planes could only carry a few bombs on each mission, so that they
+                    could carry enough fuel to return to base. Pilots were scheduled to
+                    fly 30 missions before returning to the USA, but on average only
+                    half of the pilots survived all 30 missions.
+                </p>
+            </section>
+            <section>
+                <h3>Exercise 10: Expected Utility</h3>
+                <p>
+                    Logistics experts came up with the following proposal. Each plane
+                    would carry a much heavier bomb load -- but only enough fuel to fly
+                    one way. Thus, each mission would be a suicide mission. However, the
+                    increased bomb load would mean that far fewer missions would be
+                    needed, allowing 75\% of the pilots to return home. The other 25\%
+                    of pilots, who had to fly the missions, would face certain
+                    death. Those to fly the missions would be selected randomly.
+                </p>
+                <p>
+                    Every pilot who was presented with the new proposal rejected it in
+                    favour of the status quo.
+                </p>
+            </section>
+            <section>
+                <h3>Exercise 10: Expected Utility</h3>
+                <p>Formulate the above two scenarios as lotteries within the von
+                    Neumann and Morgenstern framework, in which there are just two
+                    outcomes, \(\mathit{live}\) and \(\mathit{die}\), and such that
+                    \(\mathit{live} \pref \mathit{die}\).
+
+                    Do the pilots satisfy von Neumann and Morgenstern's axioms?
+                    That is, does there exist a preference relation \(\succeq\) over lotteries satisfying the von
+                    Neumann
+                    and
+                    Morgenstern axioms which is consistent with the pilot's preferences?
+                </p>
+            </section>
+
+            <section>
+                <h3>Exericse 10: Solution</h3>
+                <p>
+                    Let \(A\) be the status quo scenario and \(B\) the scenario in which the planes fly suicide
+                    missions.
+                    Then we can model the setting as a decision problem under uncertainty
+                    \(\langle\Omega,u\colon\Omega\to\mathbb R,\Sigma,g\colon\Sigma\to\text{lott}(\Omega)\rangle\) where:
+                <ul>
+                    <li> \(\Omega=\{\mathit{live},\mathit{die}\}\)</li>
+                    <li> \(u(\mathit{live})=1, \quad u(\mathit{die})=0\)</li>
+                    <li> \(\Sigma=\{A,B\}\)</li>
+                    <li> \(g(A)=\frac{1}{2}\mathit{live}+\frac{1}{2}\mathit{die}\)</li>
+                    <li>\(g(B)=\frac{3}{4}\mathit{live}+\frac{1}{4}\mathit{die}\)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Exericse 10: Solution</h3>
+                <p>
+                    Clearly, \(\text{EU}(g(A)) &lt; \text{EU}(g(B))\), even if utilities are defined very differently.
+                    Framed this way the
+                    pilots violated the monotonicity axiom: we have \(\mathit{live}\succeq\mathit{die}\) and
+                    \(\frac{3}{4}\ge\frac{1}{2}\), but
+                    \(\frac{3}{4}\mathit{live}+\frac{1}{4}\mathit{die}\not\succeq\frac{1}{2}\mathit{live}+\frac{1}{2}\mathit{die}\).
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 10: Expected Utility</h3>
+                <p>
+                    Now assume there are three outcomes, with associated preferences
+                    as follows:
+                    \begin{equation*}
+                    \text{live with honour}\, \succ\, \text{die with honour}\, \succ\, \text{live without honour}
+                    \end{equation*}
+                    So: living with honour would mean flying a mission and surviving; to
+                    die with honour would mean flying a mission and being killed; and
+                    living without honour would mean living because somebody else had
+                    flown a mission to certain death.
+
+                    Reformulate the above scenarios as lotteries using these
+                    preferences. For this case, does there exist a preference relation \(\succeq\) over lotteries
+                    satisfying the von Neumann and Morgenstern axioms which is consistent with the pilot's
+                    preferences?
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 10: Solution</h3>
+                <p>
+                    Let \(\Omega'=\{\text{livehonour},\text{livenohonour},\text{deathhonour}\}\).
+                    Then, let \(A'\) and \(B'\) be the scenarios such that
+                    \begin{align*}
+                    g(A')&\textstyle =\frac{1}{2}\text{livehonour}+\frac{1}{2}\text{deathhonour}\\
+                    g(B')&\textstyle =\frac{3}{4}\text{livenohonour}+\frac{1}{4}\text{deathhonour}
+                    \end{align*}
+
+                    The pilots do not necessarily violate the von Neumann Morgenstern axioms. To show this you have to
+                    produce a model, in this case a preference relation over all lotteries over \(\Omega'\) that is
+                    consistent with \(g(A')\succ g(B')\).
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 10: Solution</h3>
+                <p>
+                    One solution is to define a utility function.
+                    Let a utility function \(u\colon\Omega\to\mathbb R\) be given by
+                    \begin{align*}
+                    u(\text{livehonour}) & = 1\\
+                    u(\text{deathhonour}) & =\textstyle \frac{1}{2}\\
+                    u(\text{livenohonour})& = 0
+                    \end{align*}
+                    and assume the pilots' preferences over lotteries over \(\Omega\) be such that they prefer
+                    those lotteries \(\ell\) that maximise the expected utility \(\text{EU}(\ell)\) with respect to this
+                    utility
+                    function. It can easily be appreciated that this is consistent with the preferences over the
+                    outcomes \(\Omega\),
+                    \[
+                    \text{livehonour}\succ\text{deathhonour}\succ\text{livenohonour}\text.
+                    \]
+                    These preferences over lotteries over~$\Omega'$ also satisfy all the von Neumann-Morgenstern axioms.
+            </section>
+            <section>
+                <h3>Exercise 10: Solution</h3>
+                <p>
+                    Finally, we find that
+                    \begin{align*}
+                    \EU(g(A'))
+                    &= \textstyle \frac{1}{2} u(\text{livehonour})+\frac{1}{2} u(\text{deathhonour})\\
+                    &= \textstyle \frac{1}{2}\cdot1+\frac{1}{2}\cdot\frac{1}{2}\\
+                    &= \textstyle \frac{3}{4}\\
+                    &> \textstyle \frac{1}{8}\\
+                    &= \textstyle \frac{3}{4}\cdot 0+ \frac{1}{4}\cdot \frac{1}{2}\\
+                    &= \textstyle \frac{3}{4} u(\text{livenohonour})+ \frac{1}{4}u(\text{deathhonour})\\
+                    &= \EU(g(B'))\text.
+                    \end{align*}
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 10: Expected Utility</h3>
+                <p>
+                    Are the preferences of the airmen in this example lexicographic? If so, can you give
+                    relevant attributes and explain how they are ranked?
+                </p>
+            </section>
+
+            <section>
+                <h3>Exercise 10: Solution</h3>
+                <p>
+                    The attributes would be \(\text{honour}\), \(\text{nohonour}\), ordered as
+                    \(\text{honour}\succ\text{nohonour}\), and \(\text{live}\),
+                    \(\text{die}\), ordered as \(\text{live}\succ\text{die}\). These preferences induce a desired
+                    lexicographic
+                    preference
+                    relation over \(\{\text{honour},\text{nohonour}\}\times\{\text{live},\text{die}\}\):
+                    \[
+                    (\text{honour},\text{live}) \succ (\text{honour},\text{die}) \succ (\text{nohonour},\text{live})
+                    \succ
+                    (\text{nohonour},\text{die})\text.
+                    \]
+                </p>
+            </section>
+        </div>
+        <div class="line top"></div>
+        <div class="line bottom"></div>
+        <div class="line left"></div>
+        <div class="line right"></div>
+    </div>
+</body>
+
+</html>

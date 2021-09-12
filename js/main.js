@@ -1,3 +1,4 @@
+/*! For open source licenses, see credits.html. */
 "use strict";
 
 operate_accordion();
@@ -8,10 +9,6 @@ function operate_accordion() {
   let active_panel = all_panels[0];
 
   for (const panel of all_panels) {
-    let current_contents = panel.getElementsByClassName("contents")[0];
-    if (panel != active_panel) {
-      current_contents.setAttribute("hidden", true);
-    }
     let heading = panel.getElementsByTagName("h2")[0];
     heading.addEventListener("click", function () {
       activate_panel(panel);
@@ -20,9 +17,9 @@ function operate_accordion() {
 
   function activate_panel(panel) {
     let old_contents = active_panel.getElementsByClassName("contents")[0];
-    old_contents.setAttribute("hidden", true);
+    old_contents.style.display = "none";
     active_panel = panel;
     let new_contents = active_panel.getElementsByClassName("contents")[0];
-    new_contents.removeAttribute("hidden");
+    new_contents.style.display = "block";
   }
 }

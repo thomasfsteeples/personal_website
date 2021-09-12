@@ -16,12 +16,14 @@ function main()
         SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
         FILES_TO_WATCH=(
             "${SCRIPT_DIR}"/robots.txt
-            "${SCRIPT_DIR}"/credits.txt
             "${SCRIPT_DIR}"/html/*
             "${SCRIPT_DIR}"/scss/*
             "${SCRIPT_DIR}"/js/*
             "${SCRIPT_DIR}"/media/*
             "${SCRIPT_DIR}"/fonts/*
+            "${SCRIPT_DIR}"/aamas_presentation/*
+            "${SCRIPT_DIR}"/computational_game_theory/*
+            "${SCRIPT_DIR}"/papers/*
         )
         inotifywait -q -m -e close_write "${FILES_TO_WATCH[@]}" |
         while read -r FILENAME EVENT; do
