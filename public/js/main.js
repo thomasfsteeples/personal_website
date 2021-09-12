@@ -1,2 +1,0 @@
-/*! For open source licenses, see credits.html. */
-"use strict";function operate_accordion(){const e=document.getElementById("accordion");var t=e.getElementsByClassName("panel");let s=t[0];for(const n of t){let e=n.getElementsByTagName("h2")[0];e.addEventListener("click",function(){!function(e){let t=s.getElementsByClassName("contents")[0];t.style.display="none",s=e;let n=s.getElementsByClassName("contents")[0];n.style.display="block"}(n)})}}operate_accordion();

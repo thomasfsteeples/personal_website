@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /aamas_presentation/
-Disallow: /computational_game_theory/
-Disallow: /papers/
-Disallow: /credits.html
