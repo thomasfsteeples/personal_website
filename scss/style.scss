@@ -90,10 +90,6 @@ a {
   margin: auto;
 }
 
-#email {
-  color: $highlight-colour;
-}
-
 .contents {
   display : none;
 }
@@ -102,11 +98,17 @@ a {
   display : block;
 }
 
-.feather-icon {
+.feather {
   height : 2rem;
   width: auto;
   top: .250rem;
   position: relative;
+  color: $highlight-colour;
+}
+
+.strapline-icon {
+    margin-left : .5rem;
+    margin-right: .5rem;
 }
 
 @media (max-width: 991.98px) {
