@@ -111,6 +111,16 @@ a {
     margin-right: .5rem;
 }
 
+code {
+    font-family : monospace;
+}
+
+#blag-container {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 991.98px) {
   #strapline {
     width: 100%;
