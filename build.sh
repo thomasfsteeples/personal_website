@@ -22,8 +22,6 @@ function main()
     cp -r "${SCRIPT_DIR}"/fonts "${SCRIPT_DIR}"/public
 
     cp -r "${SCRIPT_DIR}"/papers "${SCRIPT_DIR}"/public
-
-    cp -r "${SCRIPT_DIR}"/confirmation-presentation "${SCRIPT_DIR}"/public
 }
 
 main
