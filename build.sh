@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+IFS=$'\n\t'
+
 function main()
 {
     # Lovingly stolen from https://stackoverflow.com/a/246128
@@ -14,9 +17,9 @@ function main()
 
     cp -r "${SCRIPT_DIR}"/html/* "${SCRIPT_DIR}"/public
 
-    sass --no-source-map "${SCRIPT_DIR}/scss/style.scss" | sed "1s;^;/*! For open source licenses, see credits.html */\n;" | cleancss -O2 > "${SCRIPT_DIR}/public/css/style.css"
+    yarn run sass --no-source-map "${SCRIPT_DIR}/scss/style.scss" | sed "1s;^;/*! For open source licenses, see credits.html */\n;" | yarn run cleancss -O2 > "${SCRIPT_DIR}/public/css/style.css"
 
-    uglifyjs "${SCRIPT_DIR}"/js/main.js --compress --mangle --comments /^!/ -o "${SCRIPT_DIR}"/public/js/main.js
+    yarn run uglifyjs "${SCRIPT_DIR}/js/main.js" --compress --mangle --comments '/^!/' -o "${SCRIPT_DIR}/public/js/main.js"
 
     cp -r "${SCRIPT_DIR}"/media "${SCRIPT_DIR}"/public
     cp -r "${SCRIPT_DIR}"/fonts "${SCRIPT_DIR}"/public
