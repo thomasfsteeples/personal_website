@@ -13,6 +13,10 @@
 $highlight-colour: #8052b2;
 $text-color: #343a40;
 
+* {
+    outline: solid;
+}
+
 #main-container {
   max-width: 70%;
   margin-left: auto;
@@ -52,17 +56,17 @@ a {
 
 #self-portrait {
   display: block;
-  width: 250px;
+  width: 500px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 50%;
-  padding-bottom: 10%;
+  border-radius: 25%;
+  margin-bottom: 10%;
 }
 
 #strapline {
   flex: 5;
-  text-align: center;
+  text-align: left;
   h1,
   h2,
   h3 {
