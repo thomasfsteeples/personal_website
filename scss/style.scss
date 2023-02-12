@@ -13,9 +13,9 @@
 $highlight-colour: #8052b2;
 $text-color: #343a40;
 
-* {
-    outline: solid;
-}
+// * {
+//     outline: solid;
+// }
 
 #main-container {
   max-width: 70%;
@@ -56,7 +56,7 @@ a {
 
 #self-portrait {
   display: block;
-  width: 500px;
+  width: 100%;
   height: auto;
   margin-left: auto;
   margin-right: auto;
