@@ -3,6 +3,7 @@
   "packageManager": "yarn@3.2.4",
   "devDependencies": {
     "clean-css-cli": "^5.6.1",
+    "netlify-cli": "^12.13.1",
     "sass": "^1.56.0",
     "uglify-js": "^3.17.4"
   }
