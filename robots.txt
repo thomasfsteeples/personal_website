@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /papers/
+Allow: /
+
+Sitemap: https://thomas.steeples.io/sitemap.xml

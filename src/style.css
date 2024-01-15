@@ -1,0 +1,203 @@
+/* Taken from https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+:--heading,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+:--heading,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+:--heading {
+  /* Balance text wrapping on headings */
+  text-wrap: balance;
+  font-family: Bagnard, serif;
+  font-weight: normal;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentcolor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* End of content from https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+* {
+  font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+#main-container {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 5%;
+  padding: 2%;
+
+  @media (width >= 992px) {
+    display: flex;
+  }
+}
+
+#hero {
+  text-align: center;
+
+  @media (width <= 991.98px) {
+    width: 100%;
+  }
+
+  @media (width >= 992px) {
+    flex: 5;
+  }
+}
+
+#self-portrait {
+  display: block;
+  width: 80%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15%;
+  margin-bottom: 5%;
+}
+
+#menu {
+  @media (width <= 991.98px) {
+    width: 100%;
+  }
+
+  @media (width >= 992px) {
+    flex: 7;
+  }
+
+  line-height: 1.5;
+}
+
+#loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid;
+  border-color: #ff3d00 transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: currentcolor;
+
+  /* Hover effect taken from https://github.com/IanLunn/Hover */
+  h2 {
+    vertical-align: middle;
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition-duration: 0.3s;
+    transition-property: transform;
+
+    &:hover,
+    &:focus,
+    &:active {
+      transform: translateX(8px);
+    }
+  }
+}
+
+.icon {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  color: purple;
+
+  svg {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
