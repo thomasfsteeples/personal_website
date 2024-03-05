@@ -1,12 +1,17 @@
-import _2024_12_11_first_post from "../blog-posts/2024-12-11-first-post.md";
+import _2023_12_11_first_post from "../blog-posts/html/2023-12-11-first-post.html?url";
 
-const blogPosts = [
+export interface BlogPostMetadata {
+  key: number;
+  title: string;
+  loc: string;
+  url: string;
+}
+
+export const blogPostsMetadata: BlogPostMetadata[] = [
   {
-    id: 1,
+    key: 1,
     title: "First post",
-    location: _2024_12_11_first_post,
-    urlSuffix: "2024-12-11-first-post",
+    loc: _2023_12_11_first_post,
+    url: "2023-12-11-first-post",
   },
 ];
-
-export default blogPosts;

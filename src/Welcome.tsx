@@ -2,7 +2,7 @@ import ChatIconPath from "iconoir/icons/chat-lines.svg";
 import PageIconPath from "iconoir/icons/page.svg";
 import PhoneIconPath from "iconoir/icons/phone.svg";
 import UserIconPath from "iconoir/icons/user.svg";
-import { NavLink } from "react-router-dom";
+import { ReactNode } from "react";
 import { ReactSVG } from "react-svg";
 
 import portrait1XJPG from "../assets/self-portrait-1500px.jpg";
@@ -20,17 +20,28 @@ import portrait3_5XWebP from "../assets/self-portrait-5250px.webp";
 import portrait4XJPG from "../assets/self-portrait-6000px.jpg";
 import portrait4XWebP from "../assets/self-portrait-6000px.webp";
 import portraitOriginalJPG from "../assets/self-portrait.jpg";
+import { Link } from "wouter";
 import MainContainer from "./MainContainer.tsx";
 
 function Welcome() {
   return (
     <>
       <MainContainer>
-        <Hero />
-        <Menu />
+        <WelcomeContainer>
+          <Hero />
+          <Menu />
+        </WelcomeContainer>
       </MainContainer>
     </>
   );
+}
+
+interface WelcomeContainerProps {
+  children: ReactNode;
+}
+
+function WelcomeContainer({ children }: WelcomeContainerProps) {
+  return <div id="welcome-container">{children}</div>;
 }
 
 function Hero() {
@@ -68,12 +79,14 @@ interface MenuItemProps {
 
 function MenuItem({ label, iconPath, pageRef }: MenuItemProps) {
   return (
-    <NavLink to={pageRef} className="menu-item">
-      <h2>
-        <ReactSVG wrapper="span" className="icon" src={iconPath} />
-        {label}
-      </h2>
-    </NavLink>
+    <div className="menu-item">
+      <Link href={pageRef}>
+        <h2>
+          <ReactSVG wrapper="span" className="icon" src={iconPath} />
+          {label}
+        </h2>
+      </Link>
+    </div>
   );
 }
 
@@ -81,11 +94,7 @@ function Menu() {
   return (
     <div id="menu">
       <MenuItem label="About me" iconPath={UserIconPath} pageRef="about" />
-      <MenuItem
-        label="CV"
-        iconPath={PageIconPath}
-        pageRef="=curriculum-vitae"
-      />
+      <MenuItem label="CV" iconPath={PageIconPath} pageRef="curriculum-vitae" />
       <MenuItem label="Blog" iconPath={ChatIconPath} pageRef="blog" />
       <MenuItem label="Contact" iconPath={PhoneIconPath} pageRef="contact" />
     </div>

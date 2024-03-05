@@ -1,48 +1,47 @@
 import { useEffect, useState } from "react";
-import Markdown from "react-markdown";
-import { Link } from "react-router-dom";
-import rehypeKatex from "rehype-katex";
-import remarkMath from "remark-math";
+import { Link } from "wouter";
 
 import Loading from "./Loading.tsx";
 import MainContainer from "./MainContainer.tsx";
-import blogPosts from "./blogPosts.tsx";
+import { BlogPostMetadata, blogPostsMetadata } from "./blogPosts.tsx";
 
-interface BlogEntryProps {
-  md: string;
+interface BlogPostProps {
+  htmlSrc: string;
 }
 
-export function BlogEntry({ md }: BlogEntryProps) {
+export function BlogPost({ htmlSrc }: BlogPostProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const [text, setText] = useState("");
+  const [html, setHtml] = useState("");
 
   useEffect(() => {
-    fetch(md)
+    fetch(htmlSrc)
       .then((res) => res.text())
-      .then((text) => setText(text))
-      .finally(() => setIsLoading(false));
+      .then((resText) => {
+        setHtml(resText);
+      })
+      .catch((err) => {
+        throw err;
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   });
 
   if (isLoading) {
     return <Loading />;
   }
 
-  return (
-    <Markdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-      {text}
-    </Markdown>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
 }
 
 interface BlogMenuItemProps {
-  id: number;
-  title: string;
+  blogPostMetadata: BlogPostMetadata;
 }
 
-function BlogMenuItem({ id, title }: BlogMenuItemProps) {
+function BlogMenuItem({ blogPostMetadata }: BlogMenuItemProps) {
   return (
-    <li key={id}>
-      <Link to={`${id}`}>{title}</Link>
+    <li>
+      <Link to={blogPostMetadata.url}>{blogPostMetadata.title}</Link>
     </li>
   );
 }
@@ -52,8 +51,8 @@ export function Blog() {
     <MainContainer>
       <h1>Blog</h1>
       <ul>
-        {blogPosts.map((post) => (
-          <BlogMenuItem id={post.id} title={post.title} />
+        {blogPostsMetadata.map((bpmd) => (
+          <BlogMenuItem key={bpmd.key} blogPostMetadata={bpmd} />
         ))}
       </ul>
     </MainContainer>

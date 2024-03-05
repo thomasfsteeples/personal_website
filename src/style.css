@@ -2,6 +2,10 @@
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
+:root {
+  --main-bg-color: #f8f8f8;
+}
+
 /* Box sizing rules */
 *,
 *::before,
@@ -22,7 +26,7 @@ figure,
 blockquote,
 dl,
 dd {
-  margin-block-end: 0;
+  margin: 1rem;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -33,8 +37,68 @@ ol[role="list"] {
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
   line-height: 1.5;
+
+  --accent-color-1: #deccff;
+  --accent-color-2: #deccff70;
+
+  background-color: var(--main-bg-color);
+  background-image: linear-gradient(
+      30deg,
+      var(--accent-color-1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--accent-color-1) 87.5%,
+      var(--accent-color-1)
+    ),
+    linear-gradient(
+      150deg,
+      var(--accent-color-1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--accent-color-1) 87.5%,
+      var(--accent-color-1)
+    ),
+    linear-gradient(
+      30deg,
+      var(--accent-color-1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--accent-color-1) 87.5%,
+      var(--accent-color-1)
+    ),
+    linear-gradient(
+      150deg,
+      var(--accent-color-1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--accent-color-1) 87.5%,
+      var(--accent-color-1)
+    ),
+    linear-gradient(
+      60deg,
+      var(--accent-color-2) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      var(--accent-color-2) 75%,
+      var(--accent-color-2)
+    ),
+    linear-gradient(
+      60deg,
+      var(--accent-color-2) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      var(--accent-color-2) 75%,
+      var(--accent-color-2)
+    );
+  background-size: 20px 35px;
+  background-position:
+    0 0,
+    0 0,
+    10px 18px,
+    10px 18px,
+    0 0,
+    10px 18px;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -93,24 +157,27 @@ textarea:not([rows]) {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: 2rem;
 }
 
 #main-container {
   max-width: 70%;
   margin-left: auto;
   margin-right: auto;
-  gap: 5%;
   padding: 2%;
+  background-color: var(--main-bg-color);
+  box-shadow: 6px 6px 3px 1px rgb(20 20 20 / 30%);
+}
 
+#welcome-container {
   @media (width >= 992px) {
     display: flex;
   }
@@ -147,7 +214,9 @@ h3 {
     flex: 7;
   }
 
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #loader {
@@ -162,22 +231,24 @@ h3 {
 }
 
 .menu-item {
-  text-decoration: none;
-  color: currentcolor;
-
   /* Hover effect taken from https://github.com/IanLunn/Hover */
-  h2 {
-    vertical-align: middle;
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    transition-duration: 0.3s;
-    transition-property: transform;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+  transition-duration: 0.3s;
+  transition-property: transform;
 
-    &:hover,
-    &:focus,
-    &:active {
-      transform: translateX(8px);
-    }
+  &:hover,
+  &:focus,
+  &:active {
+    transform: translateX(8px);
+  }
+
+  display: table-row;
+
+  a {
+    text-decoration: none;
+    color: currentcolor;
   }
 }
 
