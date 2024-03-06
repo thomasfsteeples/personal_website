@@ -34,4 +34,4 @@ jobs:
     - run: npm run build --if-present
     - name: Build has been successful
       if: ${{ success() }}
-    - run: echo "✔️ Build successful"
+      run: echo "✔️ Build successful"
