@@ -1,9 +1,12 @@
-/* Taken from https://piccalil.li/blog/a-more-modern-css-reset/ */
+/* Elements adapted from https://piccalil.li/blog/a-more-modern-css-reset/ */
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
+@custom-media --narrow-window (width <= 991.98px);
+@custom-media --normal-window (width >= 992px);
 
 :root {
-  --main-bg-color: #f8f8f8;
+    --main-bg-color: #f8f8f8;
+    --accent-color: #783d86;
 }
 
 /* Box sizing rules */
@@ -41,64 +44,55 @@ body {
 
   --accent-color-1: #deccff;
   --accent-color-2: #deccff70;
+  --size: 100px;
+  --cube-aspect-ratio: 1.8;
 
   background-color: var(--main-bg-color);
   background-image: linear-gradient(
       30deg,
-      var(--accent-color-1) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--accent-color-1) 87.5%,
-      var(--accent-color-1)
+      var(--accent-color-1) 12.5%,
+      transparent 12.5% 87.5%,
+      var(--accent-color-1) 87.5%
     ),
     linear-gradient(
       150deg,
-      var(--accent-color-1) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--accent-color-1) 87.5%,
-      var(--accent-color-1)
+      var(--accent-color-1) 12.5%,
+      transparent 12.5% 87.5%,
+      var(--accent-color-1) 87.5%
     ),
     linear-gradient(
       30deg,
-      var(--accent-color-1) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--accent-color-1) 87.5%,
-      var(--accent-color-1)
+      var(--accent-color-1) 12.5%,
+      transparent 12.5% 87.5%,
+      var(--accent-color-1) 87.5%
     ),
     linear-gradient(
       150deg,
-      var(--accent-color-1) 12%,
-      transparent 12.5%,
-      transparent 87%,
-      var(--accent-color-1) 87.5%,
-      var(--accent-color-1)
+      var(--accent-color-1) 12.5%,
+      transparent 12.5% 87.5%,
+      var(--accent-color-1) 87.5%
     ),
     linear-gradient(
       60deg,
       var(--accent-color-2) 25%,
-      transparent 25.5%,
-      transparent 75%,
-      var(--accent-color-2) 75%,
-      var(--accent-color-2)
+      transparent 25% 75%,
+      var(--accent-color-2) 75%
     ),
     linear-gradient(
       60deg,
       var(--accent-color-2) 25%,
-      transparent 25.5%,
-      transparent 75%,
-      var(--accent-color-2) 75%,
-      var(--accent-color-2)
+      transparent 25% 75%,
+      var(--accent-color-2) 75%
     );
-  background-size: 20px 35px;
+  background-size: calc(var(--size) * 2)
+    calc(var(--size) * var(--cube-aspect-ratio) * 2);
   background-position:
     0 0,
     0 0,
-    10px 18px,
-    10px 18px,
+    calc(var(--size)) calc(var(--size) * var(--cube-aspect-ratio)),
+    calc(var(--size)) calc(var(--size) * var(--cube-aspect-ratio)),
     0 0,
-    10px 18px;
+    calc(var(--size)) calc(var(--size) * var(--cube-aspect-ratio));
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -114,6 +108,11 @@ label {
   text-wrap: balance;
   font-family: Bagnard, serif;
   font-weight: normal;
+}
+
+/* Remove ugly underlines from links */
+a {
+  text-decoration: none;
 }
 
 /* A elements that don't have a class get default styles */
@@ -178,7 +177,7 @@ h3 {
 }
 
 #welcome-container {
-  @media (width >= 992px) {
+  @media (--normal-window) {
     display: flex;
   }
 }
@@ -186,11 +185,11 @@ h3 {
 #hero {
   text-align: center;
 
-  @media (width <= 991.98px) {
+  @media (--narrow-window) {
     width: 100%;
   }
 
-  @media (width >= 992px) {
+  @media (--normal-window) {
     flex: 5;
   }
 }
@@ -206,11 +205,11 @@ h3 {
 }
 
 #menu {
-  @media (width <= 991.98px) {
+  @media (--narrow-window) {
     width: 100%;
   }
 
-  @media (width >= 992px) {
+  @media (--normal-window) {
     flex: 7;
   }
 
@@ -247,7 +246,6 @@ h3 {
   display: table-row;
 
   a {
-    text-decoration: none;
     color: currentcolor;
   }
 }
@@ -255,7 +253,7 @@ h3 {
 .icon {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  color: purple;
+  color: var(--accent-color);
 
   svg {
     height: 2.5rem;
@@ -270,5 +268,38 @@ h3 {
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.cv-section {
+  /* table-layout: fixed; */
+  width: 100%;
+
+  th,
+  td {
+    vertical-align: top;
+
+    h3,
+    p {
+      margin: 0.5rem;
+    }
+  }
+
+  .cv-table-year {
+    width: 12%;
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: currentcolor;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--accent-color);
   }
 }

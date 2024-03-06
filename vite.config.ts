@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), vitePluginFaviconsInject('./assets/logo.svg')],
+  plugins: [react(), vitePluginFaviconsInject('./src/assets/logo.svg')],
   assetsInclude: ["**/*.md"],
   build: {
     target: "es2015",

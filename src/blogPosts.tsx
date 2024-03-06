@@ -1,4 +1,4 @@
-import _2023_12_11_first_post from "../blog-posts/html/2023-12-11-first-post.html?url";
+import _2023_12_11_first_post from "./blog-posts/html/2023-12-11-first-post.html?url";
 
 export interface BlogPostMetadata {
   key: number;

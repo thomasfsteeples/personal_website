@@ -4,24 +4,24 @@ import PhoneIconPath from "iconoir/icons/phone.svg";
 import UserIconPath from "iconoir/icons/user.svg";
 import { ReactNode } from "react";
 import { ReactSVG } from "react-svg";
-
-import portrait1XJPG from "../assets/self-portrait-1500px.jpg";
-import portrait1XWebP from "../assets/self-portrait-1500px.webp";
-import portrait1_5XJPG from "../assets/self-portrait-2250px.jpg";
-import portrait1_5XWebP from "../assets/self-portrait-2250px.webp";
-import portrait2XJPG from "../assets/self-portrait-3000px.jpg";
-import portrait2XWebP from "../assets/self-portrait-3000px.webp";
-import portrait2_5XJPG from "../assets/self-portrait-3750px.jpg";
-import portrait2_5XWebP from "../assets/self-portrait-3750px.webp";
-import portrait3XJPG from "../assets/self-portrait-4500px.jpg";
-import portrait3XWebP from "../assets/self-portrait-4500px.webp";
-import portrait3_5XJPG from "../assets/self-portrait-5250px.jpg";
-import portrait3_5XWebP from "../assets/self-portrait-5250px.webp";
-import portrait4XJPG from "../assets/self-portrait-6000px.jpg";
-import portrait4XWebP from "../assets/self-portrait-6000px.webp";
-import portraitOriginalJPG from "../assets/self-portrait.jpg";
 import { Link } from "wouter";
+
 import MainContainer from "./MainContainer.tsx";
+import portrait1XJPG from "./assets/self-portrait-1500px.jpg";
+import portrait1XWebP from "./assets/self-portrait-1500px.webp";
+import portrait1_5XJPG from "./assets/self-portrait-2250px.jpg";
+import portrait1_5XWebP from "./assets/self-portrait-2250px.webp";
+import portrait2XJPG from "./assets/self-portrait-3000px.jpg";
+import portrait2XWebP from "./assets/self-portrait-3000px.webp";
+import portrait2_5XJPG from "./assets/self-portrait-3750px.jpg";
+import portrait2_5XWebP from "./assets/self-portrait-3750px.webp";
+import portrait3XJPG from "./assets/self-portrait-4500px.jpg";
+import portrait3XWebP from "./assets/self-portrait-4500px.webp";
+import portrait3_5XJPG from "./assets/self-portrait-5250px.jpg";
+import portrait3_5XWebP from "./assets/self-portrait-5250px.webp";
+import portrait4XJPG from "./assets/self-portrait-6000px.jpg";
+import portrait4XWebP from "./assets/self-portrait-6000px.webp";
+import portraitOriginalJPG from "./assets/self-portrait.jpg";
 
 function Welcome() {
   return (
