@@ -3,7 +3,7 @@ import MainContainer from "./MainContainer";
 export default function Contact() {
   return (
     <>
-      <MainContainer>
+      <MainContainer homeButtonPresent={true}>
         <h1>Contact</h1>
         <p>I interact with the outside world via the following services:</p>
         <ul>

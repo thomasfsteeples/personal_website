@@ -12,6 +12,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/stylistic-type-checked",
     "plugin:jsx-a11y/strict",
+    "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -20,7 +21,8 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "react-refresh"],
   rules : {
-    "react-refresh/only-export-components" : "warn"
+    "react-refresh/only-export-components" : "error",
+    "@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"]
   },
   root: true,
 };

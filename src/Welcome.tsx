@@ -26,7 +26,7 @@ import portraitOriginalJPG from "./assets/self-portrait.jpg";
 function Welcome() {
   return (
     <>
-      <MainContainer>
+      <MainContainer homeButtonPresent={false}>
         <WelcomeContainer>
           <Hero />
           <Menu />

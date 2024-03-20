@@ -7,8 +7,6 @@ import Contact from "./Contact.tsx";
 import ErrorPage from "./ErrorPage.tsx";
 import Welcome from "./Welcome.tsx";
 
-// import { BlogPostMetadata, blogPostsMetadata } from "./blogPosts.tsx";
-
 export default function App() {
   return (
     <Switch>
@@ -25,7 +23,7 @@ export default function App() {
         <Blog />
       </Route>
       <Route path="/blog/:title">
-        {(params) => <BlogPost htmlSrc={params.title} />}
+        {(params) => <BlogPost id={params.title} />}
       </Route>
       <Route path="/contact">
         <Contact />

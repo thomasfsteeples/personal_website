@@ -3,13 +3,13 @@ import MainContainer from "./MainContainer";
 export default function About() {
   return (
     <>
-      <MainContainer>
+      <MainContainer homeButtonPresent={true} backButtonPresent={true}>
         <h1>About me</h1>
         <p>
-          I go by both Thomas and Tom and I&apos;m originally from Leighton
-          Buzzard, a medium-sized market town in Bedfordshire in the United
-          Kingdom, and now live in Oxford (also in the United Kingdom, not
-          Mississippi).
+          My name is Thomas, but I also go by Tom. I&apos;m originally from
+          Leighton Buzzard, a medium-sized market town in Bedfordshire in the
+          United Kingdom, and now live in Oxford (also in the United Kingdom,
+          not Mississippi).
         </p>
 
         <p>
@@ -19,9 +19,11 @@ export default function About() {
           <ul>
             <li>
               A DPhil in Autonomous Intelligent Machines and Systems from the
-              University of Oxford.
+              University of Oxford;
             </li>
-            <li>An MSc in Computer Science from the University of Oxford.</li>
+            <li>
+              An MSc in Computer Science from the University of Oxford; and
+            </li>
             <li>An MSci in Mathematics from University College London.</li>
           </ul>
           I started out as an analytic number theorist, before jumping ship and
@@ -34,11 +36,12 @@ export default function About() {
           More broadly, I have at least passing interests in the following
           areas:
           <ul>
-            <li>SAT solvers</li>
-            <li>Parsing</li>
-            <li>Program synthesis</li>
-            <li>Linux administration</li>
-            <li>Artificial intelligence</li>
+            <li>SAT solvers;</li>
+            <li>Parsing;</li>
+            <li>Program synthesis;</li>
+            <li>Linux administration;</li>
+            <li>Artificial intelligence; and</li>
+            <li>Games of all forms.</li>
           </ul>
         </p>
 

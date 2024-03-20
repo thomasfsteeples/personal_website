@@ -11,7 +11,7 @@ import steeples2021 from "./papers/steeples2021.pdf";
 export default function CV() {
   return (
     <>
-      <MainContainer>
+      <MainContainer homeButtonPresent={true}>
         <h1>Curriculum vitae</h1>
         <h2>Higher Education</h2>
         <table className="cv-section">
@@ -224,8 +224,8 @@ export default function CV() {
                   planning, and competitive wargaming, along with other relevant
                   strategic analysis activities. In addition to performing
                   theses analyses and presenting the resulting findings to the
-                  client, I&apos;m involved with project management, bid preparation,
-                  and internal tool development.
+                  client, I&apos;m involved with project management, bid
+                  preparation, and internal tool development.
                 </p>
               </td>
             </tr>
@@ -240,11 +240,11 @@ export default function CV() {
                 <p>
                   I was part of the teaching team for the Computational Game
                   Theory course at the University. This is a course for
-                  third-year undergraduates, master&apos;s and DPhil students in the
-                  Computer Science and Engineering departments. I marked the
-                  students&apos; work, provided model solutions and ran classes where
-                  we discussed the course material, along with any problems they
-                  might have had.
+                  third-year undergraduates, master&apos;s and DPhil students in
+                  the Computer Science and Engineering departments. I marked the
+                  students&apos; work, provided model solutions and ran classes
+                  where we discussed the course material, along with any
+                  problems they might have had.
                 </p>
               </td>
             </tr>

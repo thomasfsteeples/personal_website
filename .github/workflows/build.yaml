@@ -28,9 +28,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: echo "📦 Required dependencies have been installed"
-    - run: npm run build --if-present
-    - name: Build has been successful
-      if: ${{ success() }}
-      run: echo "✔️ Build successful"
+    - name: 📦 Installing required dependencies
+      run: npm ci
+    - name: 🛠️ Building project
+      run: npm run build --if-present

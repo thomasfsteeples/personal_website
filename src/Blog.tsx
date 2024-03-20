@@ -1,58 +1,56 @@
-import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
-import Loading from "./Loading.tsx";
 import MainContainer from "./MainContainer.tsx";
-import { BlogPostMetadata, blogPostsMetadata } from "./blogPosts.tsx";
+import _2024_03_03_optimizing_teams_calls from "./blog-posts/2024-03-03-optimizing-teams-calls.md";
+import _2024_03_06_the_creation_story from "./blog-posts/2024-03-06-the-creation-story.md";
 
-interface BlogPostProps {
-  htmlSrc: string;
+export interface BlogPostMetadata {
+  key: number;
+  title: string;
+  src: string;
 }
 
-export function BlogPost({ htmlSrc }: BlogPostProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [html, setHtml] = useState("");
+const blogPostsMetadata: { [id: string]: BlogPostMetadata } = {
+  "2024-03-03-optimizing-teams-calls": {
+    key: 2,
+    title: "Optimizing Teams calls",
+    src: _2024_03_03_optimizing_teams_calls,
+  },
+  "2024-03-06-the-creation-story": {
+    key: 1,
+    title: "The Creation Story",
+    src: _2024_03_06_the_creation_story,
+  },
+};
 
-  useEffect(() => {
-    fetch(htmlSrc)
-      .then((res) => res.text())
-      .then((resText) => {
-        setHtml(resText);
-      })
-      .catch((err) => {
-        throw err;
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  return <div dangerouslySetInnerHTML={{ __html: html }}></div>;
+export function BlogPost({ id }: { id: string }) {
+  const src = blogPostsMetadata[id].src;
+  return (
+    <MainContainer homeButtonPresent={true}>
+      <div
+        className="blog-post"
+        dangerouslySetInnerHTML={{ __html: src }}
+      ></div>
+    </MainContainer>
+  );
 }
 
-interface BlogMenuItemProps {
-  blogPostMetadata: BlogPostMetadata;
-}
-
-function BlogMenuItem({ blogPostMetadata }: BlogMenuItemProps) {
+function BlogMenuItem({ id }: { id: string }) {
+  const title = blogPostsMetadata[id].title;
   return (
     <li>
-      <Link to={blogPostMetadata.url}>{blogPostMetadata.title}</Link>
+      <Link to={`blog/${id}`}>{title}</Link>
     </li>
   );
 }
 
 export function Blog() {
   return (
-    <MainContainer>
+    <MainContainer homeButtonPresent={true}>
       <h1>Blog</h1>
       <ul>
-        {blogPostsMetadata.map((bpmd) => (
-          <BlogMenuItem key={bpmd.key} blogPostMetadata={bpmd} />
+        {Object.entries(blogPostsMetadata).map(([id, metadata]) => (
+          <BlogMenuItem key={metadata.key} id={id} />
         ))}
       </ul>
     </MainContainer>
