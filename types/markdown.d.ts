@@ -1,4 +1,4 @@
 declare module "*.md" {
-  const path: string;
-  export default path;
+  const contents: React.ComponentType;
+  export default contents;
 }

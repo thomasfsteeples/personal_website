@@ -1,5 +1,6 @@
 import "@fontsource/bagnard";
 import "@fontsource/open-sans";
+import "@fontsource/ibm-plex-mono";
 import React from "react";
 import ReactDOM from "react-dom/client";
 

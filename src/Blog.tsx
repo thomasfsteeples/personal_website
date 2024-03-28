@@ -7,32 +7,25 @@ import _2024_03_06_the_creation_story from "./blog-posts/2024-03-06-the-creation
 export interface BlogPostMetadata {
   key: number;
   title: string;
-  src: string;
+  Src: React.ComponentType;
 }
 
 const blogPostsMetadata: { [id: string]: BlogPostMetadata } = {
   "2024-03-03-optimizing-teams-calls": {
     key: 2,
-    title: "Optimizing Teams calls",
-    src: _2024_03_03_optimizing_teams_calls,
+    title: "Optimizing teams calls for viewer pleasure",
+    Src: _2024_03_03_optimizing_teams_calls,
   },
   "2024-03-06-the-creation-story": {
     key: 1,
-    title: "The Creation Story",
-    src: _2024_03_06_the_creation_story,
+    title: "The creation story",
+    Src: _2024_03_06_the_creation_story,
   },
 };
 
 export function BlogPost({ id }: { id: string }) {
-  const src = blogPostsMetadata[id].src;
-  return (
-    <MainContainer homeButtonPresent={true}>
-      <div
-        className="blog-post"
-        dangerouslySetInnerHTML={{ __html: src }}
-      ></div>
-    </MainContainer>
-  );
+  const Src = blogPostsMetadata[id].Src;
+  return <Src />;
 }
 
 function BlogMenuItem({ id }: { id: string }) {

@@ -3,7 +3,7 @@ import MainContainer from "./MainContainer";
 export default function About() {
   return (
     <>
-      <MainContainer homeButtonPresent={true} backButtonPresent={true}>
+      <MainContainer homeButtonPresent={true}>
         <h1>About me</h1>
         <p>
           My name is Thomas, but I also go by Tom. I&apos;m originally from

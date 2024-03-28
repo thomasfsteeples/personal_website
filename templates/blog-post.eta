@@ -1,0 +1,14 @@
+import MainContainer from "../MainContainer.tsx";
+
+<% it.importStatements.forEach(function(stmt){ %>
+    <%~ stmt %>
+<% }) %>
+
+const html = `<%~ it.html %>`;
+export default function Post() {
+   return (
+       <MainContainer homeButtonPresent={true}>
+           <div className="blog-post" dangerouslySetInnerHTML={{__html : html}} />
+       </MainContainer>
+   );
+};
