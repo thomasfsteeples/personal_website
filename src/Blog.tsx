@@ -17,7 +17,7 @@ const blogPostsMetadata: { [id: string]: BlogPostMetadata } = {
   //   title: "Optimizing teams calls for viewer pleasure",
   //   Src: _2024_03_03_optimizing_teams_calls,
   // },
-  "2024-03-06-the-creation-story": {
+  "2024-03-31-the-creation-story": {
     key: 1,
     title: "The creation story",
     Src: _2024_03_31_the_creation_story,
