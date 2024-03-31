@@ -1,8 +1,9 @@
 import { Link } from "wouter";
 
 import MainContainer from "./MainContainer.tsx";
-import _2024_03_03_optimizing_teams_calls from "./blog-posts/2024-03-03-optimizing-teams-calls.md";
-import _2024_03_06_the_creation_story from "./blog-posts/2024-03-06-the-creation-story.md";
+// import _2024_03_03_optimizing_teams_calls from "./blog-posts/2024-03-03-optimizing-teams-calls.md";
+import _2024_03_31_the_creation_story from "./blog-posts/2024-03-31-the-creation-story.md";
+import ErrorPage from "./ErrorPage.tsx";
 
 export interface BlogPostMetadata {
   key: number;
@@ -11,21 +12,24 @@ export interface BlogPostMetadata {
 }
 
 const blogPostsMetadata: { [id: string]: BlogPostMetadata } = {
-  "2024-03-03-optimizing-teams-calls": {
-    key: 2,
-    title: "Optimizing teams calls for viewer pleasure",
-    Src: _2024_03_03_optimizing_teams_calls,
-  },
+  // "2024-03-03-optimizing-teams-calls": {
+  //   key: 2,
+  //   title: "Optimizing teams calls for viewer pleasure",
+  //   Src: _2024_03_03_optimizing_teams_calls,
+  // },
   "2024-03-06-the-creation-story": {
     key: 1,
     title: "The creation story",
-    Src: _2024_03_06_the_creation_story,
+    Src: _2024_03_31_the_creation_story,
   },
 };
 
 export function BlogPost({ id }: { id: string }) {
+  if (id in blogPostsMetadata) {
   const Src = blogPostsMetadata[id].Src;
   return <Src />;
+  }
+  return <ErrorPage />
 }
 
 function BlogMenuItem({ id }: { id: string }) {

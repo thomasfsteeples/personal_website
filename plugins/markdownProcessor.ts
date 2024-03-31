@@ -26,7 +26,7 @@ export default function mdProcessorPlugin() {
     name: "markdown-processor",
 
     async transform(src: string, id: string) {
-      const mdRegex = new RegExp(".*.md$");
+      const mdRegex = /.*.md$/;
       if (mdRegex.test(id)) {
         let html = String(
           await unified()
@@ -57,8 +57,8 @@ export default function mdProcessorPlugin() {
           return "<img src=${" + res + "}" + " " + p2 + " " + "/>";
         };
 
-        const assetRegex = new RegExp('<img src="([^"]*)" (.*) />');
-        html = html.replace(assetRegex, replacer);
+        const assetRegex = /<img src="([^"]*)" (.*) \/>/g;
+        html = html.replaceAll(assetRegex, replacer);
 
         const importStatements = Object.entries(imports).map(
           ([k, v]) => `import ${v} from "${k}";`

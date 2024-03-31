@@ -11,4 +11,4 @@ export default function Post() {
            <div className="blog-post" dangerouslySetInnerHTML={{__html : html}} />
        </MainContainer>
    );
-};
+}

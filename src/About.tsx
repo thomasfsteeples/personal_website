@@ -8,8 +8,7 @@ export default function About() {
         <p>
           My name is Thomas, but I also go by Tom. I&apos;m originally from
           Leighton Buzzard, a medium-sized market town in Bedfordshire in the
-          United Kingdom, and now live in Oxford (also in the United Kingdom,
-          not Mississippi).
+          United Kingdom, and now live in Oxford (also in the United Kingdom).
         </p>
 
         <p>
@@ -26,10 +25,10 @@ export default function About() {
             </li>
             <li>An MSci in Mathematics from University College London.</li>
           </ul>
-          I started out as an analytic number theorist, before jumping ship and
-          becoming a game theorist/computational complexity theorist. I&apos;d
-          broadly describe my academic interests as lying in the intersection of
-          logic, games and complexity theory.
+          Academically, I started out as an analytic number theorist, before
+          jumping ship and becoming a game theorist/computational complexity
+          theorist. I&apos;d broadly describe my academic interests as lying in
+          the intersection of logic, games and complexity theory.
         </p>
 
         <p>
@@ -39,7 +38,7 @@ export default function About() {
             <li>SAT solvers;</li>
             <li>Parsing;</li>
             <li>Program synthesis;</li>
-            <li>Linux administration;</li>
+            <li>Linux systems administration;</li>
             <li>Artificial intelligence; and</li>
             <li>Games of all forms.</li>
           </ul>
